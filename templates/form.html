@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Internship Letter Generator</title>
+</head>
+<body>
+  <h2>Generate Internship Experience Letter (Nimoy)</h2>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul style="color: red;">
+      {% for m in messages %}
+        <li>{{ m }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  {% endwith %}
+
+  <form action="/generate" method="post">
+    <label for="name">Name (as in letter):</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="internship_code">Internship Code:</label><br>
+    <input type="text" id="internship_code" name="internship_code"><br><br>
+
+    <label for="designation">Designation / Role:</label><br>
+    <input type="text" id="designation" name="designation"><br><br>
+
+    <label for="start_date">Start Date (e.g. May 26th, 2025):</label><br>
+    <input type="text" id="start_date" name="start_date"><br><br>
+
+    <label for="end_date">End Date (e.g. July 26th, 2025):</label><br>
+    <input type="text" id="end_date" name="end_date"><br><br>
+
+    <label for="date">Letter date (leave empty to keep placeholder editable in docx):</label><br>
+    <input type="text" id="date" name="date" placeholder="e.g. September 24th, 2025"><br><br>
+
+    <label>Output format:</label><br>
+    <input type="radio" id="pdf" name="format" value="pdf" checked><label for="pdf">PDF</label>
+    <input type="radio" id="docx" name="format" value="docx"><label for="docx">DOCX</label><br><br>
+
+    <button type="submit">Generate</button>
+  </form>
+</body>
+</html>
